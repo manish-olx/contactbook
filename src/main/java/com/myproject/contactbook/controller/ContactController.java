@@ -5,6 +5,7 @@ import com.myproject.contactbook.service.ContactService;
 import com.myproject.contactbook.util.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -35,8 +36,8 @@ public class ContactController {
         return apiResponse.send(contactService.getContactItemDetail(id));
     }
 
-    @GetMapping("${controller.path.contact}")
-    public ResponseEntity<?> searchContact(Pageable pageable,
+    @GetMapping("${controller.path.contactSearch}")
+    public ResponseEntity<?> searchContact(@PageableDefault(value = 10, page = 0)Pageable pageable,
                                            @RequestParam(value = "email", required = false) String email,
                                            @RequestParam(value = "name", required = false) String name)
     {

@@ -48,8 +48,9 @@ exception:
 
 controller:
     path:
-        contact: "contact"
-        contactItem: "contact/{id}"
+        contact: "/contact"
+        contactItem: "/contact/{id}"
+        contactSearch: "/contact/search"
 
 cache:
   key:
